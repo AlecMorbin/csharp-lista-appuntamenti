@@ -48,6 +48,9 @@ namespace ListaAppuntamenti
             localitaAppuntamento = localita;
         }
 
-        
+        public override string ToString()
+        {
+            return "Data: " + dataOra + "\nNome: " + nome + "\nLocalità: " + localitaAppuntamento;
+        }
     }
 }
