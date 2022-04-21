@@ -52,5 +52,6 @@ namespace ListaAppuntamenti
         {
             return "Data: " + dataOra + "\nNome: " + nome + "\nLocalità: " + localitaAppuntamento;
         }
+       
     }
 }

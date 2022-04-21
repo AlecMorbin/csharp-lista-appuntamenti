@@ -32,7 +32,48 @@ for (int i = 0; i < numeroAppuntamenti; i++)
 
 }
 
-foreach (Appuntamento app in appuntamenti)
+void stampa() { 
+    Console.WriteLine("Lista degli appuntamenti:");
+    foreach (Appuntamento app in appuntamenti)
+    {
+        Console.WriteLine(app.ToString());
+    }
+}
+
+stampa();
+
+Console.WriteLine("Vuoi modificare un'appuntamento: Si/No");
+string risposta = Console.ReadLine();
+
+if(risposta.ToLower() == "si")
 {
-    Console.WriteLine(app.ToString());
+    Console.WriteLine("Inserisci il nome dell'appuntamento");
+    risposta = Console.ReadLine();
+    for (int i = 0; i < appuntamenti.Count; i++)
+    {
+        if (appuntamenti[i].getNome() == risposta)
+        {
+            bool flag=true;
+            do {
+                try
+                {
+                    Console.WriteLine("Inserisci la nuova data per appuntamento " + appuntamenti[i].getNome());
+                    DateTime data = DateTime.Parse(Console.ReadLine());
+                    appuntamenti[i].setDataOra(data);
+                    flag = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    flag = false;
+                }
+            } while (flag==false);
+
+            if (flag==true)
+            {
+                Console.WriteLine("Data modificata con successo");
+                stampa();
+            }
+        }
+    }
 }
